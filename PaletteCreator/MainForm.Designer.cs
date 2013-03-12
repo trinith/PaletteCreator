@@ -35,7 +35,7 @@
             this.m_tvPaletteList = new System.Windows.Forms.TreeView();
             this.m_scTopBottom = new System.Windows.Forms.SplitContainer();
             this.m_pepPaletteEditor = new ArbitraryPixel.Applications.PC.PaletteManager.PaletteEditPanel();
-            this.paletteEditorToolbar1 = new ArbitraryPixel.Applications.PC.PaletteManager.PaletteEditorToolbar();
+            this.m_petEditorToolbar = new ArbitraryPixel.Applications.PC.PaletteManager.PaletteEditorToolbar();
             this.m_msMainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_scLeftRight)).BeginInit();
             this.m_scLeftRight.Panel1.SuspendLayout();
@@ -108,7 +108,7 @@
             // m_scTopBottom.Panel1
             // 
             this.m_scTopBottom.Panel1.Controls.Add(this.m_pepPaletteEditor);
-            this.m_scTopBottom.Panel1.Controls.Add(this.paletteEditorToolbar1);
+            this.m_scTopBottom.Panel1.Controls.Add(this.m_petEditorToolbar);
             this.m_scTopBottom.Size = new System.Drawing.Size(711, 385);
             this.m_scTopBottom.SplitterDistance = 251;
             this.m_scTopBottom.TabIndex = 0;
@@ -124,14 +124,15 @@
             this.m_pepPaletteEditor.TabIndex = 1;
             this.m_pepPaletteEditor.TargetPalette = null;
             // 
-            // paletteEditorToolbar1
+            // m_petEditorToolbar
             // 
-            this.paletteEditorToolbar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.paletteEditorToolbar1.Location = new System.Drawing.Point(0, 0);
-            this.paletteEditorToolbar1.Name = "paletteEditorToolbar1";
-            this.paletteEditorToolbar1.OutputType = ArbitraryPixel.Applications.PC.PaletteManager.ColorOutputType.Hex;
-            this.paletteEditorToolbar1.Size = new System.Drawing.Size(707, 30);
-            this.paletteEditorToolbar1.TabIndex = 0;
+            this.m_petEditorToolbar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.m_petEditorToolbar.Location = new System.Drawing.Point(0, 0);
+            this.m_petEditorToolbar.Name = "m_petEditorToolbar";
+            this.m_petEditorToolbar.OutputType = ArbitraryPixel.Applications.PC.PaletteManager.ColorOutputType.Hex;
+            this.m_petEditorToolbar.Size = new System.Drawing.Size(707, 30);
+            this.m_petEditorToolbar.TabIndex = 0;
+            this.m_petEditorToolbar.CreateNew += new System.EventHandler(this.m_petEditorToolbar_CreateNew);
             // 
             // MainForm
             // 
@@ -165,7 +166,7 @@
         private System.Windows.Forms.SplitContainer m_scLeftRight;
         private System.Windows.Forms.SplitContainer m_scTopBottom;
         private System.Windows.Forms.TreeView m_tvPaletteList;
-        private PaletteEditorToolbar paletteEditorToolbar1;
+        private PaletteEditorToolbar m_petEditorToolbar;
         private PaletteEditPanel m_pepPaletteEditor;
     }
 }

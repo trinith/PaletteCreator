@@ -98,6 +98,13 @@ namespace ArbitraryPixel.Applications.PC.PaletteManager
         }
         #endregion
 
+        #region Public Methods
+        public void CreateNewSwatch()
+        {
+            m_targetPalette.PaletteItems.Add(new PaletteItem("New Swatch"));
+        }
+        #endregion
+
         #region Event Handlers
         void PaletteItems_ItemAdded(object sender, PaletteItem item)
         {

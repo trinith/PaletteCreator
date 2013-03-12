@@ -27,9 +27,16 @@ namespace ArbitraryPixel.Applications.PC.PaletteManager
             m_pepPaletteEditor.TargetPalette = m_activePalette;
         }
 
+        #region Event Handlers
         private void m_tsmiExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        private void m_petEditorToolbar_CreateNew(object sender, EventArgs e)
+        {
+            m_pepPaletteEditor.CreateNewSwatch();
+        }
+        #endregion
     }
 }
