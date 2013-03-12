@@ -34,9 +34,21 @@ namespace ArbitraryPixel.Applications.PC.PaletteManager
             this.Close();
         }
 
-        private void m_petEditorToolbar_CreateNew(object sender, EventArgs e)
+        private void m_petEditorToolbar_NewSelected(object sender, EventArgs e)
         {
-            m_pepPaletteEditor.CreateNewSwatch();
+            m_pepPaletteEditor.Focus();
+            m_pepPaletteEditor.BeginCreateMode();
+        }
+
+        private void m_petEditorToolbar_RemoveSelected(object sender, EventArgs e)
+        {
+            m_pepPaletteEditor.Focus();
+            m_pepPaletteEditor.BeginRemoveMode();
+        }
+
+        private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            m_pepPaletteEditor.HandleKeyPress(m_pepPaletteEditor, e);
         }
         #endregion
     }

@@ -52,8 +52,8 @@
             this.m_tsmiFile});
             this.m_msMainMenu.Location = new System.Drawing.Point(0, 0);
             this.m_msMainMenu.Name = "m_msMainMenu";
-            this.m_msMainMenu.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.m_msMainMenu.Size = new System.Drawing.Size(689, 24);
+            this.m_msMainMenu.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.m_msMainMenu.Size = new System.Drawing.Size(919, 28);
             this.m_msMainMenu.TabIndex = 0;
             this.m_msMainMenu.Text = "menuStrip1";
             // 
@@ -62,13 +62,13 @@
             this.m_tsmiFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.m_tsmiExit});
             this.m_tsmiFile.Name = "m_tsmiFile";
-            this.m_tsmiFile.Size = new System.Drawing.Size(37, 20);
+            this.m_tsmiFile.Size = new System.Drawing.Size(44, 24);
             this.m_tsmiFile.Text = "&File";
             // 
             // m_tsmiExit
             // 
             this.m_tsmiExit.Name = "m_tsmiExit";
-            this.m_tsmiExit.Size = new System.Drawing.Size(92, 22);
+            this.m_tsmiExit.Size = new System.Drawing.Size(102, 24);
             this.m_tsmiExit.Text = "E&xit";
             this.m_tsmiExit.Click += new System.EventHandler(this.m_tsmiExit_Click);
             // 
@@ -76,8 +76,8 @@
             // 
             this.m_scLeftRight.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.m_scLeftRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.m_scLeftRight.Location = new System.Drawing.Point(0, 24);
-            this.m_scLeftRight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.m_scLeftRight.Location = new System.Drawing.Point(0, 28);
+            this.m_scLeftRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.m_scLeftRight.Name = "m_scLeftRight";
             // 
             // m_scLeftRight.Panel1
@@ -87,18 +87,17 @@
             // m_scLeftRight.Panel2
             // 
             this.m_scLeftRight.Panel2.Controls.Add(this.m_scTopBottom);
-            this.m_scLeftRight.Size = new System.Drawing.Size(689, 312);
-            this.m_scLeftRight.SplitterDistance = 152;
-            this.m_scLeftRight.SplitterWidth = 3;
+            this.m_scLeftRight.Size = new System.Drawing.Size(919, 386);
+            this.m_scLeftRight.SplitterDistance = 202;
             this.m_scLeftRight.TabIndex = 1;
             // 
             // m_tvPaletteList
             // 
             this.m_tvPaletteList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.m_tvPaletteList.Location = new System.Drawing.Point(0, 0);
-            this.m_tvPaletteList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.m_tvPaletteList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.m_tvPaletteList.Name = "m_tvPaletteList";
-            this.m_tvPaletteList.Size = new System.Drawing.Size(148, 308);
+            this.m_tvPaletteList.Size = new System.Drawing.Size(198, 382);
             this.m_tvPaletteList.TabIndex = 2;
             // 
             // m_scTopBottom
@@ -106,7 +105,7 @@
             this.m_scTopBottom.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.m_scTopBottom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.m_scTopBottom.Location = new System.Drawing.Point(0, 0);
-            this.m_scTopBottom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.m_scTopBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.m_scTopBottom.Name = "m_scTopBottom";
             this.m_scTopBottom.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -114,20 +113,21 @@
             // 
             this.m_scTopBottom.Panel1.Controls.Add(this.m_pepPaletteEditor);
             this.m_scTopBottom.Panel1.Controls.Add(this.m_petEditorToolbar);
-            this.m_scTopBottom.Size = new System.Drawing.Size(534, 312);
-            this.m_scTopBottom.SplitterDistance = 203;
-            this.m_scTopBottom.SplitterWidth = 3;
+            this.m_scTopBottom.Size = new System.Drawing.Size(713, 386);
+            this.m_scTopBottom.SplitterDistance = 251;
             this.m_scTopBottom.TabIndex = 0;
             // 
             // m_pepPaletteEditor
             // 
             this.m_pepPaletteEditor.AutoScroll = true;
-            this.m_pepPaletteEditor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.m_pepPaletteEditor.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.m_pepPaletteEditor.DefaultBackgroundColor = System.Drawing.SystemColors.WindowFrame;
+            this.m_pepPaletteEditor.DefaultSwatchColor = System.Drawing.Color.Black;
             this.m_pepPaletteEditor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.m_pepPaletteEditor.Location = new System.Drawing.Point(0, 24);
-            this.m_pepPaletteEditor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.m_pepPaletteEditor.Location = new System.Drawing.Point(0, 30);
+            this.m_pepPaletteEditor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.m_pepPaletteEditor.Name = "m_pepPaletteEditor";
-            this.m_pepPaletteEditor.Size = new System.Drawing.Size(530, 175);
+            this.m_pepPaletteEditor.Size = new System.Drawing.Size(709, 217);
             this.m_pepPaletteEditor.TabIndex = 1;
             this.m_pepPaletteEditor.TargetPalette = null;
             // 
@@ -135,24 +135,27 @@
             // 
             this.m_petEditorToolbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.m_petEditorToolbar.Location = new System.Drawing.Point(0, 0);
-            this.m_petEditorToolbar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.m_petEditorToolbar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.m_petEditorToolbar.Name = "m_petEditorToolbar";
             this.m_petEditorToolbar.OutputType = ArbitraryPixel.Applications.PC.PaletteManager.ColorOutputType.Hex;
-            this.m_petEditorToolbar.Size = new System.Drawing.Size(530, 24);
+            this.m_petEditorToolbar.Size = new System.Drawing.Size(709, 30);
             this.m_petEditorToolbar.TabIndex = 0;
-            this.m_petEditorToolbar.CreateNew += new System.EventHandler(this.m_petEditorToolbar_CreateNew);
+            this.m_petEditorToolbar.NewSelected += new System.EventHandler(this.m_petEditorToolbar_NewSelected);
+            this.m_petEditorToolbar.RemoveSelected += new System.EventHandler(this.m_petEditorToolbar_RemoveSelected);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(689, 336);
+            this.ClientSize = new System.Drawing.Size(919, 414);
             this.Controls.Add(this.m_scLeftRight);
             this.Controls.Add(this.m_msMainMenu);
+            this.KeyPreview = true;
             this.MainMenuStrip = this.m_msMainMenu;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "Palette Creator";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainForm_KeyPress);
             this.m_msMainMenu.ResumeLayout(false);
             this.m_msMainMenu.PerformLayout();
             this.m_scLeftRight.Panel1.ResumeLayout(false);

@@ -37,14 +37,14 @@ namespace ArbitraryPixel.Applications.PC.PaletteManager
             get { return m_outputType; }
         }
 
-        public event EventHandler CreateNew;
+        public event EventHandler NewSelected;
         public event EventHandler RemoveSelected;
         public event ColorOutputTypeChangedEventHandler OutputTypeChanged;
 
         private void m_btnNew_Click(object sender, EventArgs e)
         {
-            if (this.CreateNew != null)
-                this.CreateNew(this, new EventArgs());
+            if (this.NewSelected != null)
+                this.NewSelected(this, new EventArgs());
         }
 
         private void m_btnRemoveActive_Click(object sender, EventArgs e)

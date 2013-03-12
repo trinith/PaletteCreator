@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 
 namespace ArbitraryPixel.Applications.PC.PaletteManager
 {
@@ -30,6 +31,8 @@ namespace ArbitraryPixel.Applications.PC.PaletteManager
         #region Public Properties
         public PaletteItem TargetPaletteItem { get; set; }
         public bool IsMoving { get; private set; }
+        public bool IsInteractive { get; set; }
+        public bool IsMovable { get; set; }
 
         public bool IsSelected
         {
@@ -61,6 +64,9 @@ namespace ArbitraryPixel.Applications.PC.PaletteManager
 
             this.Location = new Point(0, 0);
             this.Size = new Size(100, 100);
+
+            this.IsInteractive = true;
+            this.IsMovable = true;
 
             m_customRenderers.Add(State.Normal, new CustomRenderer(DrawNormal));
             m_customRenderers.Add(State.Normal | State.Hot, new CustomRenderer(DrawNormalHot));
@@ -99,6 +105,8 @@ namespace ArbitraryPixel.Applications.PC.PaletteManager
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            // TODO: Transparency leaves artifacts behind... worry about this later.
+
             base.OnPaint(e);
 
             CustomRenderer renderer = m_customRenderers[State.Normal];
@@ -113,16 +121,22 @@ namespace ArbitraryPixel.Applications.PC.PaletteManager
         {
             base.OnMouseEnter(e);
 
-            m_state = m_state | State.Hot;
-            this.Invalidate();
+            if (this.IsInteractive)
+            {
+                m_state = m_state | State.Hot;
+                this.Invalidate();
+            }
         }
 
         protected override void OnMouseLeave(EventArgs e)
         {
             base.OnMouseLeave(e);
 
-            m_state = m_state & (~State.Hot);
-            this.Invalidate();
+            if (this.IsInteractive)
+            {
+                m_state = m_state & (~State.Hot);
+                this.Invalidate();
+            }
         }
 
         protected override void OnMouseUp(MouseEventArgs e)
@@ -137,30 +151,43 @@ namespace ArbitraryPixel.Applications.PC.PaletteManager
         {
             base.OnMouseDown(e);
 
-            this.BringToFront();
+            if (this.IsInteractive)
+                this.BringToFront();
         }
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
 
+            if (!this.IsInteractive)
+                return;
+
             if (e.Button == MouseButtons.Left)
             {
                 if (m_clickLoc == null)
                 {
                     m_clickLoc = new Point(e.X, e.Y);
-                    this.IsMoving = true;
                 }
             }
 
             if (m_clickLoc != null)
             {
-                this.Location = new Point(
-                    this.Location.X + e.X - m_clickLoc.Value.X,
-                    this.Location.Y + e.Y - m_clickLoc.Value.Y
-                );
+                // If we have a click location and the current point isn't that, we've moved.
+                if (e.Location != m_clickLoc)
+                {
+                    this.IsMoving = true;
+                    this.Focus();
+                }
 
-                this.Invalidate();
+                if (this.IsMovable)
+                {
+                    this.Location = new Point(
+                        this.Location.X + e.X - m_clickLoc.Value.X,
+                        this.Location.Y + e.Y - m_clickLoc.Value.Y
+                    );
+
+                    this.Invalidate();
+                }
             }
         }
 
@@ -174,6 +201,27 @@ namespace ArbitraryPixel.Applications.PC.PaletteManager
 
         #region Render Methods
         private void DrawSelectionIndicator(Graphics g, Rectangle bounds, Color color)
+        {
+            DrawCorner(g, bounds, color);
+            Matrix originalTransform = g.Transform;
+
+            g.TranslateTransform(bounds.Width, 0);
+            g.RotateTransform(90);
+            DrawCorner(g, bounds, color);
+            g.Transform = originalTransform;
+
+            g.TranslateTransform(0, bounds.Height);
+            g.RotateTransform(270);
+            DrawCorner(g, bounds, color);
+            g.Transform = originalTransform;
+
+            g.TranslateTransform(bounds.Width, bounds.Height);
+            g.RotateTransform(180);
+            DrawCorner(g, bounds, color);
+            g.Transform = originalTransform;
+        }
+
+        private void DrawCorner(Graphics g, Rectangle bounds, Color color)
         {
             g.FillPolygon(
                 new SolidBrush(color),
@@ -202,7 +250,6 @@ namespace ArbitraryPixel.Applications.PC.PaletteManager
         private void DrawNormal(Graphics g, Rectangle bounds)
         {
             DrawSwatch(g, bounds);
-            //DrawSelectionIndicator(g, bounds, Color.Gray);
         }
 
         private void DrawNormalHot(Graphics g, Rectangle bounds)
@@ -220,7 +267,7 @@ namespace ArbitraryPixel.Applications.PC.PaletteManager
         private void DrawSelectedHot(Graphics g, Rectangle bounds)
         {
             DrawSwatch(g, bounds);
-            DrawSelectionIndicator(g, bounds, Color.Gray);
+            DrawSelectionIndicator(g, bounds, Color.LightGray);
         }
         #endregion
     }

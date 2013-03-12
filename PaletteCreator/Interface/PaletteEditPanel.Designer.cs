@@ -30,12 +30,10 @@
         {
             this.SuspendLayout();
             // 
-            // PaletteEditor
+            // PaletteEditPanel
             // 
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.Size = new System.Drawing.Size(562, 367);
             this.ResumeLayout(false);
-
         }
 
         #endregion
