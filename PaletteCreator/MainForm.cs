@@ -22,6 +22,7 @@ namespace ArbitraryPixel.Applications.PC.PaletteManager
 
             m_activePalette = new Palette("Gary Test");
             m_activePalette.PaletteItems.Add(new PaletteItem("Red", Color.Red));
+            m_activePalette.PaletteItems.Add(new PaletteItem("Blue", Color.Blue));
             
             m_palettes.Add(m_activePalette);
             m_pepPaletteEditor.TargetPalette = m_activePalette;

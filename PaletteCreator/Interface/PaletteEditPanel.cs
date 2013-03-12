@@ -45,7 +45,19 @@ namespace ArbitraryPixel.Applications.PC.PaletteManager
         #region Private Methods
         private Point GetInsertionPoint()
         {
-            return new Point(8, 8);
+            Point p = new Point(8, 8);
+
+            if (m_editItems.Count > 0)
+            {
+                PaletteItem keyItem = m_editItems.Keys.Select(x => x).ToArray()[m_editItems.Count - 1];
+                PaletteEditItem pei = m_editItems[keyItem];
+                p = new Point(
+                    pei.Location.X + pei.Size.Width / 2,
+                    pei.Location.Y + pei.Size.Height / 2
+                );
+            }
+
+            return p;
         }
 
         private void CreatePaletteEditItem(PaletteItem item)
@@ -138,6 +150,8 @@ namespace ArbitraryPixel.Applications.PC.PaletteManager
                     m_selectedItems.Add(p);
                 }
             }
+
+            this.Invalidate();
         }
         #endregion
 

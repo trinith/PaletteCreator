@@ -72,14 +72,28 @@ namespace ArbitraryPixel.Applications.PC.PaletteManager
         #endregion
 
         #region Override Methods
-        protected override CreateParams CreateParams
+        protected override void OnPaintBackground(PaintEventArgs e)
         {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x00000020; //WS_EX_TRANSPARENT
+            base.OnPaintBackground(e);
 
-                return cp;
+            Graphics g = e.Graphics;
+
+            if (this.Parent != null)
+            {
+                int index = this.Parent.Controls.GetChildIndex(this);
+                for (int i = this.Parent.Controls.Count - 1; i > index; i--)
+                {
+                    Control c = this.Parent.Controls[i];
+                    if (c.Bounds.IntersectsWith(this.Bounds) && c.Visible)
+                    {
+                        Bitmap bmp = new Bitmap(c.Width, c.Height, g);
+                        c.DrawToBitmap(bmp, c.ClientRectangle);
+                        g.TranslateTransform(c.Left - this.Left, c.Top - this.Top);
+                        g.DrawImageUnscaled(bmp, Point.Empty);
+                        g.TranslateTransform(this.Left - c.Left, this.Top - c.Top);
+                        bmp.Dispose();
+                    }
+                }
             }
         }
 
@@ -99,22 +113,22 @@ namespace ArbitraryPixel.Applications.PC.PaletteManager
         {
             base.OnMouseEnter(e);
 
-            //m_state = m_state | State.Hot;
-            //this.Invalidate();
+            m_state = m_state | State.Hot;
+            this.Invalidate();
         }
 
         protected override void OnMouseLeave(EventArgs e)
         {
             base.OnMouseLeave(e);
 
-            //m_state = m_state & (~State.Hot);
-            //this.Invalidate();
+            m_state = m_state & (~State.Hot);
+            this.Invalidate();
         }
 
         protected override void OnMouseUp(MouseEventArgs e)
         {
             base.OnMouseUp(e);
-            return;
+
             m_clickLoc = null;
             this.IsMoving = false;
         }
@@ -123,13 +137,12 @@ namespace ArbitraryPixel.Applications.PC.PaletteManager
         {
             base.OnMouseDown(e);
 
-            //this.BringToFront();
+            this.BringToFront();
         }
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
-            return;
 
             if (e.Button == MouseButtons.Left)
             {
@@ -180,8 +193,8 @@ namespace ArbitraryPixel.Applications.PC.PaletteManager
             RectangleF swatchBounds = new RectangleF(
                 bounds.Left + (bounds.Width * (Constants.EDIT_INDICATOR_THICKNESS / 2f)),
                 bounds.Top + (bounds.Height * (Constants.EDIT_INDICATOR_THICKNESS / 2f)),
-                bounds.Width - (Constants.EDIT_INDICATOR_THICKNESS * 2f),
-                bounds.Height - (Constants.EDIT_INDICATOR_THICKNESS * 2f)
+                bounds.Width - (bounds.Width * Constants.EDIT_INDICATOR_THICKNESS),
+                bounds.Height - (bounds.Height * Constants.EDIT_INDICATOR_THICKNESS)
             );
             g.FillRectangle(new SolidBrush(this.TargetPaletteItem.Color), swatchBounds);
         }
