@@ -9,7 +9,7 @@ namespace ArbitraryPixel.Applications.PC.PaletteManager
     {
         #region Public Properties
         public string Name { get; set; }
-        public List<PaletteItem> PaletteItems { get; private set;  }
+        public PaletteItemCollection PaletteItems { get; private set;  }
         #endregion
 
         #region Constructors
@@ -20,7 +20,7 @@ namespace ArbitraryPixel.Applications.PC.PaletteManager
 
         public Palette(string name, IEnumerable<PaletteItem> items)
         {
-            this.PaletteItems = new List<PaletteItem>();
+            this.PaletteItems = new PaletteItemCollection();
 
             this.Name = name;
 

@@ -22,6 +22,13 @@ namespace ArbitraryPixel.Applications.PC.PaletteManager
         public event ItemActionEventHandler ItemRemoved;
         #endregion
 
+        #region Public Methods
+        public void AddRange(IEnumerable<PaletteItem> items)
+        {
+            m_items.AddRange(items);
+        }
+        #endregion
+
         #region ICollection<PaletteItem> Implementation
         public void Add(PaletteItem item)
         {
