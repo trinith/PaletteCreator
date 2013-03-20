@@ -36,6 +36,7 @@
             this.m_scTopBottom = new System.Windows.Forms.SplitContainer();
             this.m_pepPaletteEditor = new ArbitraryPixel.Applications.PC.PaletteManager.PaletteEditPanel();
             this.m_petEditorToolbar = new ArbitraryPixel.Applications.PC.PaletteManager.PaletteEditorToolbar();
+            this.swatchEditPanel1 = new ArbitraryPixel.Applications.PC.PaletteManager.SwatchEditPanel();
             this.m_msMainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_scLeftRight)).BeginInit();
             this.m_scLeftRight.Panel1.SuspendLayout();
@@ -43,6 +44,7 @@
             this.m_scLeftRight.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_scTopBottom)).BeginInit();
             this.m_scTopBottom.Panel1.SuspendLayout();
+            this.m_scTopBottom.Panel2.SuspendLayout();
             this.m_scTopBottom.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +55,7 @@
             this.m_msMainMenu.Location = new System.Drawing.Point(0, 0);
             this.m_msMainMenu.Name = "m_msMainMenu";
             this.m_msMainMenu.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.m_msMainMenu.Size = new System.Drawing.Size(919, 28);
+            this.m_msMainMenu.Size = new System.Drawing.Size(982, 28);
             this.m_msMainMenu.TabIndex = 0;
             this.m_msMainMenu.Text = "menuStrip1";
             // 
@@ -87,8 +89,8 @@
             // m_scLeftRight.Panel2
             // 
             this.m_scLeftRight.Panel2.Controls.Add(this.m_scTopBottom);
-            this.m_scLeftRight.Size = new System.Drawing.Size(919, 386);
-            this.m_scLeftRight.SplitterDistance = 202;
+            this.m_scLeftRight.Size = new System.Drawing.Size(982, 727);
+            this.m_scLeftRight.SplitterDistance = 215;
             this.m_scLeftRight.TabIndex = 1;
             // 
             // m_tvPaletteList
@@ -97,7 +99,7 @@
             this.m_tvPaletteList.Location = new System.Drawing.Point(0, 0);
             this.m_tvPaletteList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.m_tvPaletteList.Name = "m_tvPaletteList";
-            this.m_tvPaletteList.Size = new System.Drawing.Size(198, 382);
+            this.m_tvPaletteList.Size = new System.Drawing.Size(211, 723);
             this.m_tvPaletteList.TabIndex = 2;
             // 
             // m_scTopBottom
@@ -113,8 +115,12 @@
             // 
             this.m_scTopBottom.Panel1.Controls.Add(this.m_pepPaletteEditor);
             this.m_scTopBottom.Panel1.Controls.Add(this.m_petEditorToolbar);
-            this.m_scTopBottom.Size = new System.Drawing.Size(713, 386);
-            this.m_scTopBottom.SplitterDistance = 251;
+            // 
+            // m_scTopBottom.Panel2
+            // 
+            this.m_scTopBottom.Panel2.Controls.Add(this.swatchEditPanel1);
+            this.m_scTopBottom.Size = new System.Drawing.Size(763, 727);
+            this.m_scTopBottom.SplitterDistance = 409;
             this.m_scTopBottom.TabIndex = 0;
             // 
             // m_pepPaletteEditor
@@ -127,7 +133,7 @@
             this.m_pepPaletteEditor.Location = new System.Drawing.Point(0, 30);
             this.m_pepPaletteEditor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.m_pepPaletteEditor.Name = "m_pepPaletteEditor";
-            this.m_pepPaletteEditor.Size = new System.Drawing.Size(709, 217);
+            this.m_pepPaletteEditor.Size = new System.Drawing.Size(759, 375);
             this.m_pepPaletteEditor.TabIndex = 1;
             this.m_pepPaletteEditor.TargetPalette = null;
             // 
@@ -138,16 +144,24 @@
             this.m_petEditorToolbar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.m_petEditorToolbar.Name = "m_petEditorToolbar";
             this.m_petEditorToolbar.OutputType = ArbitraryPixel.Applications.PC.PaletteManager.ColorOutputType.Hex;
-            this.m_petEditorToolbar.Size = new System.Drawing.Size(709, 30);
+            this.m_petEditorToolbar.Size = new System.Drawing.Size(759, 30);
             this.m_petEditorToolbar.TabIndex = 0;
             this.m_petEditorToolbar.NewSelected += new System.EventHandler(this.m_petEditorToolbar_NewSelected);
             this.m_petEditorToolbar.RemoveSelected += new System.EventHandler(this.m_petEditorToolbar_RemoveSelected);
+            // 
+            // swatchEditPanel1
+            // 
+            this.swatchEditPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.swatchEditPanel1.Location = new System.Drawing.Point(0, 0);
+            this.swatchEditPanel1.Name = "swatchEditPanel1";
+            this.swatchEditPanel1.Size = new System.Drawing.Size(759, 310);
+            this.swatchEditPanel1.TabIndex = 0;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(919, 414);
+            this.ClientSize = new System.Drawing.Size(982, 755);
             this.Controls.Add(this.m_scLeftRight);
             this.Controls.Add(this.m_msMainMenu);
             this.KeyPreview = true;
@@ -163,6 +177,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.m_scLeftRight)).EndInit();
             this.m_scLeftRight.ResumeLayout(false);
             this.m_scTopBottom.Panel1.ResumeLayout(false);
+            this.m_scTopBottom.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.m_scTopBottom)).EndInit();
             this.m_scTopBottom.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -180,6 +195,7 @@
         private System.Windows.Forms.TreeView m_tvPaletteList;
         private PaletteEditorToolbar m_petEditorToolbar;
         private PaletteEditPanel m_pepPaletteEditor;
+        private SwatchEditPanel swatchEditPanel1;
     }
 }
 

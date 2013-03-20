@@ -48,8 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interface\ColorGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Interface\DoubleBufferedControl.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Interface\SwatchEditPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Interface\SwatchEditPanel.Designer.cs">
+      <DependentUpon>SwatchEditPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Objects\ColorOutputType.cs" />
     <Compile Include="Constants.cs" />
@@ -60,6 +69,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Objects\HSLColor.cs" />
     <Compile Include="Objects\Keyboard.cs" />
     <Compile Include="Objects\Palette.cs" />
     <Compile Include="Interface\PaletteEditItem.cs">
@@ -83,6 +93,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Objects\ValueChangedEventArgs.cs" />
+    <EmbeddedResource Include="Interface\SwatchEditPanel.resx">
+      <DependentUpon>SwatchEditPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
