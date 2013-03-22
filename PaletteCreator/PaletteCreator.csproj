@@ -48,10 +48,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\ColorExtensions.cs" />
+    <Compile Include="Extensions\FloatExtensions.cs" />
     <Compile Include="Interface\ColorGrid.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Interface\DoubleBufferedControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Interface\SliderBase.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Interface\SwatchEditPanel.cs">

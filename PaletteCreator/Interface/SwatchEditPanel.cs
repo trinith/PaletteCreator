@@ -14,6 +14,8 @@ namespace ArbitraryPixel.Applications.PC.PaletteManager
         public SwatchEditPanel()
         {
             InitializeComponent();
+
+            this.DoubleBuffered = true;
         }
     }
 }
