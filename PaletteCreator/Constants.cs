@@ -6,6 +6,7 @@ using System.Drawing;
 
 namespace ArbitraryPixel.Applications.PC.PaletteManager
 {
+    // Test
     public class Constants
     {
         public static readonly Color DEFAULT_PALETTE_ITEM_COLOR = Color.Black;
